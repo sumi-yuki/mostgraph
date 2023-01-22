@@ -1,2 +1,2 @@
 # mostgraph
-Mostgraph (Forced Oscillation Technique) measurement result estimation
+Mostgraph (Forced Oscillation Technique) measurement result estimation.
