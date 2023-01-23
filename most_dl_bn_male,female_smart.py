@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan  6 23:28:30 2023
+Created by Yuki Sumi on Jan  23 2023
 """
-
-
-#confirmed to work on tensorflow2.0
 
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -24,7 +21,7 @@ import tensorflowjs as tfjs
 #検証用データー として mostgraph_normal_test_data_numpy
 #学習用データー として mostgraph_normal_train_data_numpy
 #に入力
-#検証用データー数は number_of_test = 20 で設定
+#検証用データー数は number_of_test = 10 で設定
 
 # csvファイルの読み込み
 mostgraphdata = pd.read_csv("female,male_controldata_smart.csv", encoding="utf-8")
@@ -78,13 +75,11 @@ print(mostgraph_normal_train_data_numpy[0])
 #学習用データのかさまし、x軸方向に1倍、y軸方向に5倍する
 mostgraph_normal_train_data_numpy_extended=np.tile(mostgraph_normal_train_data_numpy,(5, 1))
 
-
-
 #疾患データー読み込み
 #検証用データー として mostgraph_abnormal_test_data_numpy
 #学習用データー として mostgraph_abnormal_train_data_numpy
 #に入力
-#検証用データー数は number_of_test = 20 で設定
+#検証用データー数は number_of_test = 10 で設定
 
 # csvファイルの読み込み
 mostgraphdata = pd.read_csv("female,male_patientsdata_smart.csv", encoding="utf-8")
@@ -263,7 +258,5 @@ print("predicted for abnormal:", predicted)
 #python用
 model.save("deeplearing_model")
 #javascript用
-#tfjs_target_dir = "./"
-#tfjs.converters.save_keras_model(model, tfjs_target_dir)
 #import tensorflowjs as tfjs
 tfjs.converters.save_keras_model(model, "./mostgraph_model")
