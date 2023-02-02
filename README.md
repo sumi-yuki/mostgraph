@@ -3,15 +3,15 @@
 No reference range has yet been established for the results of Mostograph measurements.
 Even if reference ranges were established, it would be too broad and difficult to interpret in clinical practice.
 Our strategy is to determine respiratory normal subjects by pattern recognition of all measurement items using deep learning, rather than a single item in the Mostograph measurement.
-This deep learning was trained to distinguish between respiratory normal subjects and patients with bronchial asthma/cough variant asthma(CVA), but we believe it can be used to identify respiratory disease patients in general.
->Other respiratory diseases such as bacterial pneumonia, interstital pneumonia, etc. can be diagnosed by chest X-ray and COPD can be diagnosed by spirometry.
+This deep learning was trained to distinguish between respiratory normal subjects and patients with bronchial asthma/cough variant asthma(CVA), but we believe it can be used to identify respiratory disease patients in general.  
+Other respiratory diseases such as bacterial pneumonia, interstital pneumonia, etc. can be diagnosed by chest X-ray and COPD can be diagnosed by spirometry.
 However, patients with bronchial asthma/CVA sometimes difficult to diagnose immediately in the doctor's office.
 Asthma is a disease that improves and worsens, and patients do not necessarily present with wheezes or expiratory airflow limitation at the time of hospital visit.
 Chest X-ray findings are usually normal, and no specific findings are found on blood examination.
-Although some asthma patients show an increased FeNO (Fractional exhaled Nitric Oxide), some people with allergic predispositions have an increased FeNO even if they do not have asthma.
+Although some asthma patients show an increased FeNO (Fractional exhaled Nitric Oxide), some people with allergic predispositions have an increased FeNO even if they do not have asthma.  
 For an objective diagnosis of asthma, it is necessary to demonstrate the variable expiratory airflow limitation or airway hyperresponsiveness. To reveal variable expiratory airflow limitation, the patient have expiratory airflow limitation at the time of presentation and have a positive bronchodilator (BD) responsiveness (reversibility) test, excessive variation in lung function between visits, or excessive variability in peak flow (https://ginasthma.org). Airway hyperresponsiveness test is rarely performed in Japan because it requires an hour-long test with a doctor in attendance.
 In reality, in many cases, the physician will make a comprehensive diagnosis and provide diagnostic treatment in order to alleviate the patient's suffering as soon as possible.
-Since it is sometimes difficult for a non-specialist respiratory physician to make an on-the-spot diagnosis in an outpatient setting, the results of a Mostograph measurement can aid in that diagnosis.
+Since it is sometimes difficult for a non-specialist respiratory physician to make an on-the-spot diagnosis in an outpatient setting, the results of a Mostograph measurement can aid in that diagnosis.  
 The diagnostic accuracy of identification of respiratory normal subjects and patients with bronchial asthma/cough asthma by deep learning with this program is about 70%.
 It was reported that there is a weak or absent correlations between resistance and reactance values measured by Mostgraph and age, height, and weight among men and women [https://www.sciencedirect.com/science/article/pii/S2212534516000022]. In fact, adding these data did not improve the diagnostic accuracy .
 In addition, even if separate models were created for men and women inputting gender, the accuracy did not improve.
