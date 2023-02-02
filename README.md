@@ -3,7 +3,8 @@
  No reference range has yet been established for the results of Mostograph measurements.
 Even if reference ranges were established, it would be too broad and difficult to interpret in clinical practice.
 Our strategy is to determine respiratory normal subjects by pattern recognition of all measurement items using deep learning, rather than a single item in the Mostograph measurement.
-This deep learning was trained to distinguish between respiratory normal subjects and patients with bronchial asthma/cough variant asthma(CVA), but we believe it can be used to identify respiratory disease patients in general.  
+This deep learning was trained to distinguish between respiratory normal subjects and patients with bronchial asthma/cough variant asthma(CVA), but we believe it can be used to identify respiratory disease patients in general. 
+It is implemented at (https://plaza.umin.ac.jp/~pulm/mostgraph/)
 ***
 Other respiratory diseases such as bacterial pneumonia, interstital pneumonia, etc. can be diagnosed by chest X-ray and COPD can be diagnosed by spirometry.
 However, patients with bronchial asthma/CVA sometimes difficult to diagnose immediately in the doctor's office.
@@ -25,7 +26,7 @@ Therefore, we used the single model for men and women, and input only measuremen
 モストグラフ測定結果の基準範囲は未だ設定されていません。
 基準範囲が設定されたとしても、範囲が広すぎて臨床現場での解釈が困難になると思われます。
 そこで我々はモストグラフ測定の単一項目ではなく、深層学習による全ての測定項目のパターン認識で、呼吸器系正常者が判定出来ないかと考えました。
-この深層学習は、呼吸器系正常者と、気管支喘息/咳喘息の患者を区別するように訓練されましたが、一般的に呼吸器疾患患者を識別するのに使用出来ると思います。
+この深層学習は、呼吸器系正常者と、気管支喘息/咳喘息の患者を区別するように訓練されましたが、一般的に呼吸器疾患患者を識別するのに使用出来ると思います。(https://plaza.umin.ac.jp/~pulm/mostgraph/)に実装しています。
 ***
 細菌性肺炎、間質性肺炎などの他の呼吸器疾患は胸部X線,CTで診断でき、COPDはスパイロメトリーで診断できます。
 ただ、気管支喘息/咳喘息患者は、外来ですぐに診断することが難しい場合があります。
