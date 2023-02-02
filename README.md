@@ -4,6 +4,7 @@ No reference range has yet been established for the results of Mostograph measur
 Even if reference ranges were established, it would be too broad and difficult to interpret in clinical practice.
 Our strategy is to determine respiratory normal subjects by pattern recognition of all measurement items using deep learning, rather than a single item in the Mostograph measurement.
 This deep learning was trained to distinguish between respiratory normal subjects and patients with bronchial asthma/cough variant asthma(CVA), but we believe it can be used to identify respiratory disease patients in general.
+> blockquote
 Other respiratory diseases such as bacterial pneumonia, interstital pneumonia, etc. can be diagnosed by chest X-ray and COPD can be diagnosed by spirometry.
 However, patients with bronchial asthma/CVA sometimes difficult to diagnose immediately in the doctor's office.
 Asthma is a disease that improves and worsens, and patients do not necessarily present with wheezes or expiratory airflow limitation at the time of hospital visit.
