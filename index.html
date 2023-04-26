@@ -5,15 +5,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mostgraph measurement result classifier</title>
-    <meta content="Mostgraph measurement result classifier" name="title">
-    <meta content="Mostgraph measurement result classifier" name="description">
-    <meta content="Mostgraph,reference ranges, measurement, classifier, normal, abnormal" name="keywords">
+    <title>Mostgraph measurement results classifier</title>
+    <meta content="Mostgraph measurement results classifier" name="title">
+    <meta content="Mostgraph measurement results classifier" name="description">
+    <meta content="Mostgraph, reference ranges, measurement, classifier, normal, abnormal" name="keywords">
+    <style>
+     body {background-color: powderblue;}
+     h1   {font-family: courier; color: black; }
+     h2   {color: blue; }
+     input[type="number"] {width: 160px;}
+    </style>
   </head>
 
   <body>
-    <h1>Mostgraph measurement result classifier</h1>
-    <h2><span style="color:blue;">Judge if subject is respiratory normal or Abnormal by Deep Learning</h2>
+    <h1>Mostgraph measurement results classifier</h1>
+    <h2><span style="color:blue;">Judge if the patient is Respiratory Normal or Abnormal by Deep Learning</h2>
      
      <!-- Warning for javascript not enabling -->
     <noscript>
@@ -24,68 +30,69 @@
 	<form name="form" id="gahwm"  action="">
 		<table border="1" width="300" cellspacing="0" cellpadding="1" bordercolor="#333333">
 		<tr>
-			<td bgcolor="#99CC00">Gender</td>
+			<td bgcolor="#CCFFCC">Sex (Gender)</td>
 			<td>
 			  <input type="radio" id="gender_male" name="gender" value="0" >Male
 			  <input type="radio" id="gender_female" name="gender" value="1" >Female
 			</td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">R5in</td>
-			<td><input type="number" id="R5in" min="0" max="100" size="20" required></td>
+			<td bgcolor="#CCFFCC">R5in</td>
+			<td><input type="number" id="R5in" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">R5out</td>
-			<td><input type="number" id="R5out" min="0" max="100" size="20" required></td>
+			<td bgcolor="#CCFFCC">R5ex</td>
+			<td><input type="number" id="R5ex" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">R20in</td>
-			<td><input type="number" id="R20in" min="0" max="100" size="10" required></td>
+			<td bgcolor="#CCFFCC">R20in</td>
+			<td><input type="number" id="R20in" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">R20out</td>
-			<td><input type="number" id="R20out" min="0" max="100" size="10" required></td>
+			<td bgcolor="#CCFFCC">R20ex</td>
+			<td><input type="number" id="R20ex" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">X5in</td>
-			<td><input type="number" id="X5in" min="0" max="100" size="10" required></td>
+			<td bgcolor="#CCFFCC">X5in</td>
+			<td><input type="number" id="X5in" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">X5out</td>
-			<td><input type="number" id="X5out" min="0" max="100" size="10" required></td>
+			<td bgcolor="#CCFFCC">X5ex</td>
+			<td><input type="number" id="X5ex" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">Fresin</td>
-			<td><input type="number" id="Fresin" min="0" max="100" size="10" required></td>
+			<td bgcolor="#CCFFCC">Fresin</td>
+			<td><input type="number" id="Fresin" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">Fresout</td>
-			<td><input type="number" id="Fresout" min="0" max="100" size="10" required></td>
+			<td bgcolor="#CCFFCC">Fresex</td>
+			<td><input type="number" id="Fresex" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">ALXin</td>
-			<td><input type="number" id="ALXin" min="0" max="100" size="10" required></td>
+			<td bgcolor="#CCFFCC">ALXin</td>
+			<td><input type="number" id="ALXin" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#99CC00">ALXout</td>
-			<td><input type="number" id="ALXout" min="0" max="100" size="10" required></td>
+			<td bgcolor="#CCFFCC">ALXex</td>
+			<td><input type="number" id="ALXex" min="-100" max="100"  required></td>
 		</tr>
 		</table>
 
 		<p><span style="color:blue;">After entering data, please push the calculate bottun.</p>
 		<input type="button" value="　　　　　　　　　　　　　　　Calculate　　　　　　　　　　　　　　　　" onClick="keisan(this)" >
 		
-		<div>Prrobability for respiratory Abnormal: <span id="Probability"></span></div>
+		<div style="font-family: courier; color:red; font-size: 120%;">Probability for respiratory Abnormal: <span id="Probability"></span></div>
 	</form>
 
     <!-- Load TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
 
     <script> 
-    <!-- OnClick, analyze input, pass to Deep Learning inference [run()], display result  [ProbabilityForAbormal] -->
+    <!-- keisan(): OnClick, analyze input, pass to Deep Learning inference [run()], display result  [ProbabilityForAbormal] -->
     let ProbabilityForAbormal;
     
     async function keisan() {
+    <!--  analyze input -->
 	// Checking Gender input
 	let input_gender = document.querySelector("input[name=gender]:checked");
 	if( input_gender ) {
@@ -98,132 +105,133 @@
 	}
 	//console.log(gender);	
 	
-	// R5inの値を取得する
+	// Get R5in value
 	targetElement = document.getElementById('R5in');
 	let r5in = targetElement.value;
-	console.log(r5in);
+	//console.log(r5in);
 	// Alert when no input at R5in
-	// isNaNは、数値ではない場合にtrueになる
+	// isNaN will be true if invalid number was entered
 	if ((! r5in) || isNaN(r5in)) {  // Alert when no input for R5in
 		alert("Please input R5in");
 		return 0;
 	} 
 
-	// R5outの値を取得する
-	targetElement = document.getElementById('R5out');
-	let r5out = targetElement.value;
-	//console.log(r5out);
-	// Alert when no input at R5out
-	// isNaNは、数値ではない場合にtrueになる
-	if ((! r5out) || isNaN(r5out)) {  // Alert when no input for R5out
-		alert("Please input R5out");
+	// Get R5ex value
+	targetElement = document.getElementById('R5ex');
+	let r5ex = targetElement.value;
+	//console.log(r5ex);
+	// Alert when no input at R5ex
+	// isNaN will be true if invalid number was entered
+	if ((! r5ex) || isNaN(r5ex)) {  // Alert when no input for R5out
+		alert("Please input R5ex");
 		return 0;
 	} 
 
-	// R20inの値を取得する
+	// Get R20in value
 	targetElement = document.getElementById('R20in');
 	let r20in = targetElement.value;
 	//console.log(r20in);
 	// Alert when no input at R20in
-	// isNaNは、数値ではない場合にtrueになる
+	// isNaN will be true if invalid number was entered
 	if ((! r20in) || isNaN(r20in)) {  // Alert when no input for R20in
 		alert("Please input R20i");
 		return 0;
 	} 
 
-	// R20outの値を取得する
-	targetElement = document.getElementById('R20out');
-	let r20out = targetElement.value;
-	//console.log(r20out);
-	// Alert when no input at R20out
-	// isNaNは、数値ではない場合にtrueになる
-	if ((! r20out) || isNaN(r20out)) {  // Alert when no input for R20out
-		alert("Please input R20out");
+	// Get R20ex value
+	targetElement = document.getElementById('R20ex');
+	let r20ex = targetElement.value;
+	//console.log(r20ex);
+	// Alert when no input at R20ex
+	// isNaN will be true if invalid number was entered
+	if ((! r20ex) || isNaN(r20ex)) {  // Alert when no input for R20out
+		alert("Please input R20ex");
 		return 0;
 	} 
 
-	// X5inの値を取得する
+	// Get X5in value
 	targetElement = document.getElementById('X5in');
 	let x5in = targetElement.value;
 	//console.log(x5in);
 	// Alert when no input at X5in
-	// isNaNは、数値ではない場合にtrueになる
+	// isNaN will be true if invalid number was entered
 	if ((! x5in) || isNaN(x5in)) {  // Alert when no input for X5in
 		alert("Please input X5in");
 		return 0;
 	} 
 
-	// X5outの値を取得する
-	targetElement = document.getElementById('X5out');
-	let x5out = targetElement.value;
+	// Get X5ex value
+	targetElement = document.getElementById('X5ex');
+	let x5ex = targetElement.value;
 	//console.log(x5out);
 	// Alert when no input at X5out
-	// isNaNは、数値ではない場合にtrueになる
-	if ((! x5out) || isNaN(x5out)) {  // Alert when no input for X5out
-		alert("Please input X5out");
+	// isNaN will be true if invalid number was entered
+	if ((! x5ex) || isNaN(x5ex)) {  // Alert when no input for X5ex
+		alert("Please input X5ex");
 		return 0;
 	} 
 	
-	// R20inの値を取得する
+	// Get Fresin value
 	targetElement = document.getElementById('Fresin');
 	let fresin = targetElement.value;
 	//console.log(fresin);
 	// Alert when no input at Fresin
-	// isNaNは、数値ではない場合にtrueになる
+	// isNaN will be true if invalid number was entered
 	if ((! fresin) || isNaN(fresin)) {  // Alert when no input for Fresin
 		alert("Please input Fresin");
 		return 0;
 	} 
 
-	// Fresoutの値を取得する
-	targetElement = document.getElementById('Fresout');
-	let fresout = targetElement.value;
-	//console.log(fresout);
-	// Alert when no input at Fresout
-	// isNaNは、数値ではない場合にtrueになる
-	if ((! fresout) || isNaN(fresout)) {  // Alert when no input for Fresout
-		alert("Please input Fresout");
+	// Get Fresex value
+	targetElement = document.getElementById('Fresex');
+	let fresex = targetElement.value;
+	//console.log(fresex);
+	// Alert when no input at Fresex
+	// isNaN will be true if invalid number was entered
+	if ((! fresex) || isNaN(fresex)) {  // Alert when no input for Fresex
+		alert("Please input Fresex");
 		return 0;
 	} 
 
-	// ALXinの値を取得する
+	// ALXin value
 	targetElement = document.getElementById('ALXin');
 	let alxin = targetElement.value;
 	//console.log(alxin);
 	// Alert when no input at ALXin
-	// isNaNは、数値ではない場合にtrueになる
+	// isNaN will be true if invalid number was entered
 	if ((! alxin) || isNaN(alxin)) {  // Alert when no input for ALXin
 		alert("Please input ALXin");
 		return 0;
 	} 
 
-	// ALXoutの値を取得する
-	targetElement = document.getElementById('ALXout');
-	let alxout = targetElement.value;
-	//console.log(alxout);
+	// ALXex value
+	targetElement = document.getElementById('ALXex');
+	let alxex = targetElement.value;
+	//console.log(alxex);
 	// Alert when no input at ALXout
-	// isNaNは、数値ではない場合にtrueになる
-	if ((! alxout) || isNaN(alxout)) {  // Alert when no input for ALXout
+	// isNaN will be true if invalid number was entered
+	if ((! alxex) || isNaN(alxex)) {  // Alert when no input for ALXex
 		alert("Please input ALXout");
 		return 0;
 	}
-	 
-    await run(parseFloat(gender), parseFloat(r5in), parseFloat(r5out), parseFloat(r20in), parseFloat(r20out), parseFloat(x5in), parseFloat(x5out), parseFloat(fresin), parseFloat(fresout), parseFloat(alxin), parseFloat(alxout));
-    
-    console.log(ProbabilityForAbormal)
-
+	
+	<!-- pass to Deep Learning inference [run()] -->
+    await run(parseFloat(gender), parseFloat(r5in), parseFloat(r5ex), parseFloat(r20in), parseFloat(r20ex), parseFloat(x5in), parseFloat(x5ex), parseFloat(fresin), parseFloat(fresex), parseFloat(alxin), parseFloat(alxex));
+    //console.log(ProbabilityForAbormal)
+   
+    <!--  display result  [ProbabilityForAbormal] -->
     document.getElementById('Probability').innerText =  String(ProbabilityForAbormal * 100) + '%';
     }
+    <!-- End of keisan(): OnClick, analyze input, pass to Deep Learning inference [run()], display result  [ProbabilityForAbormal] -->
+   
     <!-- Deep Learning inference -->
-    async function run(gender, r5in, r5out, r20in, r20out, x5in, x5out, fresin, fresout, alxin, alxout){
+    async function run(gender, r5in, r5ex, r20in, r20ex, x5in, x5ex, fresin, fresex, alxin, alxex){
     // return after setting ProbabilityForAbormal
     const model = await tf.loadLayersModel('./mostgraph_model/model.json');
 
-    const x1 = tf.tensor2d([[gender, r5in, r5out, r20in, r20out, x5in, x5out, fresin, fresout, alxin, alxout]]); 
+    const x1 = tf.tensor2d([[gender, r5in, r5ex, r20in, r20ex, x5in, x5ex, fresin, fresex, alxin, alxex]]); 
     x1.print(); 
-    const y1 = tf.tidy(() => {
-    	return model.predict(x1);
-    }); 
+    const y1 = model.predict(x1); 
     y1.print();
 
    // Normal control
@@ -240,15 +248,15 @@
 
     // set Result
     ProbabilityForAbormal = y1.reshape([-1]).arraySync()[0];
-    console.log(ProbabilityForAbormal)
+    //console.log(ProbabilityForAbormal)
     }
-
+    <!-- End of run(): Deep Learning inference -->
     </script>
   </body>
 </html>
 
 <!-- 
-diagnosis	gender	Rin5	Rex5	Rin20	Rex20	Xin5	Xex5	Fresin	Fresex	ALXin	ALXex
+diagnosis	gender	Rin5	Rex5	Rin20	Rex20	X5in	X5ex	Fresin	Fresex	ALXin	ALXex
 0	1	1.07	1.36	1.72	1.98	-0.22	-0.16	6.03	5.74	0.7	0.58
 1	0	2.98	4.43	2.5	2.69	-0.73	-2.93	11.38	21.1	3.15	24.07
 -->
