@@ -225,11 +225,11 @@
      elem.innerText =  (ProbabilityForAbormal * 100).toFixed(2) + ' %'
      <!-- color set -->
      if (ProbabilityForAbormal < 0.4){
-      elem.style.color = green;
+      elem.style.color = "green";
      }else if (ProbabilityForAbormal < 0.6){
-      elem.style.color = yellow;
+      elem.style.color = "yellow";
      }else{
-        elem.style.color = green;
+        elem.style.color = "red";
      } <!-- End of color set -->
     }
     <!-- End of keisan(): OnClick, analyze input, pass to Deep Learning inference [run()], display result  [ProbabilityForAbormal] -->
