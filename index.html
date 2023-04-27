@@ -81,7 +81,7 @@
 		<p><span style="color:blue;">After entering data, please push the calculate bottun.</p>
 		<input type="button" value="　　　　　　　　　　　　　　　Calculate　　　　　　　　　　　　　　　　" onClick="keisan(this)" >
 		
-		<div style="font-family: courier; color:red; font-size: 120%;">Probability for respiratory Abnormal: <span id="Probability"></span></div>
+		<div id="DisplayProbability" style="font-family: courier; color:red; font-size: 120%;">Probability for respiratory Abnormal: <span id="Probability"></span></div>
 	</form>
 
     <!-- Load TensorFlow.js -->
@@ -220,10 +220,10 @@
     //console.log(ProbabilityForAbormal)
    
     <!--  display result  [ProbabilityForAbormal] -->
-     let elem = document.getElementById('Probability')
      <!-- set display value -->
-     elem.innerText =  (ProbabilityForAbormal * 100).toFixed(2) + ' %'
+     document.getElementById('Probability').innerText =  (ProbabilityForAbormal * 100).toFixed(2) + ' %'
      <!-- color set -->
+     let elem = document.getElementById('DisplayProbability')
      if (ProbabilityForAbormal < 0.4){
       elem.style.color = "green";
      }else if (ProbabilityForAbormal < 0.6){
