@@ -230,9 +230,9 @@
     const model = await tf.loadLayersModel('./mostgraph_model/model.json');
 
     const x1 = tf.tensor2d([[gender, r5in, r5ex, r20in, r20ex, x5in, x5ex, fresin, fresex, alxin, alxex]]); 
-    x1.print(); 
+    //x1.print(); 
     const y1 = model.predict(x1); 
-    y1.print();
+    //y1.print();
 
    // Normal control
    // const x2 = tf.tensor2d([[1, 1.07, 1.36, 1.72, 1.98, -0.22,	-0.16, 6.03, 5.74, 0.7, 0.58]]); 
