@@ -184,10 +184,10 @@ plt.savefig("./training.jpg", dpi=2400)
 plt.show()
 
 # save the trained model for python
-model.save("deeplearing_model")
+model.save("deeplearning_model")
 # save the trained model for javascript
 import tensorflowjs as tfjs
-tfjs.converters.save_keras_model(model, "./mostgraph_js")
+tfjs.converters.save_keras_model(model, "./mostgraph_model")
 
 # test the model
 # labels_test = mostgraph_normal_test_data_numpy[ : , 0:1]
