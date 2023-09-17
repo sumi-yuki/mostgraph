@@ -2,6 +2,44 @@
 """
 Created by Yuki Sumi on Jan  23 2023
 """
+# installing modules
+
+# numpy https://numpy.org
+# To install,
+# pip install numpy
+#  or
+# conda install numpy
+
+# pandas https://pandas.pydata.org
+# To install,
+# pip install pandas
+#  or
+# conda install -c conda-forge pandas
+
+# tensorflow https://www.tensorflow.org/?hl=en
+# To install,
+# pip install tensorflow==2.10.0
+
+# tensorflow.js https://www.tensorflow.org/js?hl=en
+# To install,
+# pip install tensorflowjs==3.21.0
+
+# Matplotlib https://matplotlib.org
+# To install,
+# pip install matplotlib
+# conda install -c conda-forge matplotlib
+
+# scikit-learn https://scikit-learn.org/stable/
+# To install,
+# pip install -U scikit-learn 
+#  or
+# conda install -c conda-forge matplotlib
+
+# imbalanced-learn https://imbalanced-learn.org/stable/index.html
+# To install,
+# pip install -U imbalanced-learn
+#  or
+# conda install -c conda-forge imbalanced-learn
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -97,9 +135,9 @@ val_acc = history_dict['val_accuracy']
 # make list from 1 to epoch
 epochlist = range(1, len(loss_values) +1)
 # write graph
-plt.plot(epochlist, acc, 'bo', label='Accuracy at training')
+plt.plot(epochlist, acc, 'go', label='Accuracy at training')
 plt.plot(epochlist, val_acc, 'b', label='Accuracy at validation')
-plt.plot(epochlist, loss_values, 'ro', label='Loss at training')
+plt.plot(epochlist, loss_values, 'mo', label='Loss at training')
 plt.plot(epochlist, val_loss_values, 'r', label='Loss at validation')
 # title
 plt.title('Training and Validation')
