@@ -34,7 +34,7 @@ Created by Yuki Sumi on Jan  23 2023
 # To install,
 # pip install -U scikit-learn 
 #  or
-# conda install -c conda-forge matplotlib
+# conda install -c conda-forge scikit-learn
 
 # imbalanced-learn https://imbalanced-learn.org/stable/index.html
 # To install,
