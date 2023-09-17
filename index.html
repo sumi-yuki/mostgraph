@@ -19,7 +19,7 @@
 
   <body>
     <h1>Mostgraph measurement results classifier</h1>
-    <h2><span style="color:blue;">Judge if the patient is Respiratory Normal or Abnormal by Deep Learning</h2>
+    <h2><span style="color:blue;">Judge if the patient is Respiratory Normal or Abnormal (asthma/CVA) by Deep Learning</h2>
      
      <!-- Warning for javascript not enabling -->
     <noscript>
@@ -36,52 +36,54 @@
 			  <input type="radio" id="gender_female" name="gender" value="1" >Female
 			</td>
 		</tr>
-		<tr>
-			<td bgcolor="#CCFFCC">R5in</td>
-			<td><input type="number" id="R5in" min="-100" max="100"  required></td>
-		</tr>
-		<tr>
-			<td bgcolor="#CCFFCC">R5ex</td>
+		   <!--  Caution: The web input order of inhale and exhale is opposite to the deep learning model input.  -->
+        <tr>
+			<td bgcolor="#CCFFCC">R5_exhale</td>
 			<td><input type="number" id="R5ex" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#CCFFCC">R20in</td>
+			<td bgcolor="#CCFFCC">R5_inhale</td>
+			<td><input type="number" id="R5in" min="-100" max="100"  required></td>
+		</tr>
+		<tr>
+			<td bgcolor="#CCFFCC">R20_exhale</td>
+			<td><input type="number" id="R20ex" min="-100" max="100"  required></td>
+		</tr>
+
+		<tr>
+			<td bgcolor="#CCFFCC">R20_inhale</td>
 			<td><input type="number" id="R20in" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#CCFFCC">R20ex</td>
-			<td><input type="number" id="R20ex" min="-100" max="100"  required></td>
-		</tr>
-		<tr>
-			<td bgcolor="#CCFFCC">X5in</td>
-			<td><input type="number" id="X5in" min="-100" max="100"  required></td>
-		</tr>
-		<tr>
-			<td bgcolor="#CCFFCC">X5ex</td>
+			<td bgcolor="#CCFFCC">X5_exhale</td>
 			<td><input type="number" id="X5ex" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#CCFFCC">Fresin</td>
-			<td><input type="number" id="Fresin" min="-100" max="100"  required></td>
+			<td bgcolor="#CCFFCC">X5_inhale</td>
+			<td><input type="number" id="X5in" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#CCFFCC">Fresex</td>
+			<td bgcolor="#CCFFCC">Fres_exhale</td>
 			<td><input type="number" id="Fresex" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#CCFFCC">ALXin</td>
-			<td><input type="number" id="ALXin" min="-100" max="100"  required></td>
+			<td bgcolor="#CCFFCC">Fres_inhale</td>
+			<td><input type="number" id="Fresin" min="-100" max="100"  required></td>
 		</tr>
 		<tr>
-			<td bgcolor="#CCFFCC">ALXex</td>
+			<td bgcolor="#CCFFCC">ALX_exhale</td>
 			<td><input type="number" id="ALXex" min="-100" max="100"  required></td>
+		</tr>
+		<tr>
+			<td bgcolor="#CCFFCC">ALX_inhale</td>
+			<td><input type="number" id="ALXin" min="-100" max="100"  required></td>
 		</tr>
 		</table>
 
 		<p><span style="color:blue;">After entering data, please push the calculate bottun.</p>
 		<input type="button" value="　　　　　　　　　　　　　　　Calculate　　　　　　　　　　　　　　　　" onClick="keisan(this)" >
 		
-		<div id="DisplayProbability" style="font-family: courier; color:red; font-size: 120%;">Probability for respiratory Abnormal: <span id="Probability"></span></div>
+		<div id="DisplayProbability" style="font-family: courier; color:red; font-size: 120%;">Respiratory Normal or Abnormal: <span id="Probability"></span></div>
 	</form>
 
     <!-- Load TensorFlow.js -->
@@ -97,7 +99,7 @@
 	let input_gender = document.querySelector("input[name=gender]:checked");
 	if( input_gender ) {
 		gender = input_gender.value;
-		console.log(gender);
+		// console.log(gender);
 	}
 	else { // Alert when no input for Gender
 	    alert("Please select Gender");
@@ -108,44 +110,44 @@
 	// Get R5in value
 	targetElement = document.getElementById('R5in');
 	let r5in = targetElement.value;
-	//console.log(r5in);
+	// console.log(r5in);
 	// Alert when no input at R5in
 	// isNaN will be true if invalid number was entered
 	if ((! r5in) || isNaN(r5in)) {  // Alert when no input for R5in
-		alert("Please input R5in");
+		alert("Please input R5inhale");
 		return 0;
 	} 
 
 	// Get R5ex value
 	targetElement = document.getElementById('R5ex');
 	let r5ex = targetElement.value;
-	//console.log(r5ex);
+	// console.log(r5ex);
 	// Alert when no input at R5ex
 	// isNaN will be true if invalid number was entered
-	if ((! r5ex) || isNaN(r5ex)) {  // Alert when no input for R5out
-		alert("Please input R5ex");
+	if ((! r5ex) || isNaN(r5ex)) {  // Alert when no input for R5ex
+		alert("Please input R5exhale");
 		return 0;
 	} 
 
 	// Get R20in value
 	targetElement = document.getElementById('R20in');
 	let r20in = targetElement.value;
-	//console.log(r20in);
+	// console.log(r20in);
 	// Alert when no input at R20in
 	// isNaN will be true if invalid number was entered
 	if ((! r20in) || isNaN(r20in)) {  // Alert when no input for R20in
-		alert("Please input R20i");
+		alert("Please input R20inhale");
 		return 0;
 	} 
 
 	// Get R20ex value
 	targetElement = document.getElementById('R20ex');
 	let r20ex = targetElement.value;
-	//console.log(r20ex);
+	// console.log(r20ex);
 	// Alert when no input at R20ex
 	// isNaN will be true if invalid number was entered
 	if ((! r20ex) || isNaN(r20ex)) {  // Alert when no input for R20out
-		alert("Please input R20ex");
+		alert("Please input R20exhale");
 		return 0;
 	} 
 
@@ -156,93 +158,99 @@
 	// Alert when no input at X5in
 	// isNaN will be true if invalid number was entered
 	if ((! x5in) || isNaN(x5in)) {  // Alert when no input for X5in
-		alert("Please input X5in");
+		alert("Please input X5inhale");
 		return 0;
 	} 
 
 	// Get X5ex value
 	targetElement = document.getElementById('X5ex');
 	let x5ex = targetElement.value;
-	//console.log(x5out);
-	// Alert when no input at X5out
+	// console.log(x5out);
+	// Alert when no input at X5ex
 	// isNaN will be true if invalid number was entered
 	if ((! x5ex) || isNaN(x5ex)) {  // Alert when no input for X5ex
-		alert("Please input X5ex");
+		alert("Please input X5exhale");
 		return 0;
 	} 
 	
 	// Get Fresin value
 	targetElement = document.getElementById('Fresin');
 	let fresin = targetElement.value;
-	//console.log(fresin);
+	// console.log(fresin);
 	// Alert when no input at Fresin
 	// isNaN will be true if invalid number was entered
 	if ((! fresin) || isNaN(fresin)) {  // Alert when no input for Fresin
-		alert("Please input Fresin");
+		alert("Please input Fresinhale");
 		return 0;
 	} 
 
 	// Get Fresex value
 	targetElement = document.getElementById('Fresex');
 	let fresex = targetElement.value;
-	//console.log(fresex);
+	// console.log(fresex);
 	// Alert when no input at Fresex
 	// isNaN will be true if invalid number was entered
 	if ((! fresex) || isNaN(fresex)) {  // Alert when no input for Fresex
-		alert("Please input Fresex");
+		alert("Please input Fresexhale");
 		return 0;
 	} 
 
 	// ALXin value
 	targetElement = document.getElementById('ALXin');
 	let alxin = targetElement.value;
-	//console.log(alxin);
+	// console.log(alxin);
 	// Alert when no input at ALXin
 	// isNaN will be true if invalid number was entered
 	if ((! alxin) || isNaN(alxin)) {  // Alert when no input for ALXin
-		alert("Please input ALXin");
+		alert("Please input ALXinhale");
 		return 0;
 	} 
 
 	// ALXex value
 	targetElement = document.getElementById('ALXex');
 	let alxex = targetElement.value;
-	//console.log(alxex);
-	// Alert when no input at ALXout
+	// console.log(alxex);
+	// Alert when no input at ALXex
 	// isNaN will be true if invalid number was entered
 	if ((! alxex) || isNaN(alxex)) {  // Alert when no input for ALXex
-		alert("Please input ALXout");
+		alert("Please input ALXexhale");
 		return 0;
 	}
 	
 	<!-- pass to Deep Learning inference [run()] -->
+	<!-- set display area, treshould -->
+    let elem = document.getElementById('DisplayProbability')
+    cutoff = 0.845189;
+    
     await run(parseFloat(gender), parseFloat(r5in), parseFloat(r5ex), parseFloat(r20in), parseFloat(r20ex), parseFloat(x5in), parseFloat(x5ex), parseFloat(fresin), parseFloat(fresex), parseFloat(alxin), parseFloat(alxex));
-    //console.log(ProbabilityForAbormal)
+    // console.log(ProbabilityForAbormal)
    
     <!--  display result  [ProbabilityForAbormal] -->
-     <!-- set display value -->
-     document.getElementById('Probability').innerText =  (ProbabilityForAbormal * 100).toFixed(2) + ' %'
-     <!-- color set -->
-     let elem = document.getElementById('DisplayProbability')
-     if (ProbabilityForAbormal < 0.4){
-      elem.style.color = "green";
-     }else if (ProbabilityForAbormal < 0.6){
-      elem.style.color = "yellow";
-     }else{
+     if (ProbabilityForAbormal < cutoff){
+       elem.style.color = "green";
+       displaytext ="normal";
+     }
+     else{
         elem.style.color = "red";
-     } <!-- End of color set -->
-    }
-    <!-- End of keisan(): OnClick, analyze input, pass to Deep Learning inference [run()], display result  [ProbabilityForAbormal] -->
+        displaytext ="Abnormal";
+     } <!-- End of  if (ProbabilityForAbormal < cutoff) -->
+     
+     <!-- set display value -->
+    displaytext = displaytext + "\n" + (ProbabilityForAbormal).toFixed(5)
+    document.getElementById('Probability').innerText = displaytext
+    }   <!-- End of keisan(): OnClick, analyze input, pass to Deep Learning inference [run()], display result  [ProbabilityForAbormal] -->
    
     <!-- Deep Learning inference -->
     async function run(gender, r5in, r5ex, r20in, r20ex, x5in, x5ex, fresin, fresex, alxin, alxex){
-    // return after setting ProbabilityForAbormal
+    // Caution: The web input order of inhale and exhale is opposite to the deep learning model input.
+    // Return: Set  variable "ProbabilityForAbormal"
+    
     const model = await tf.loadLayersModel('./mostgraph_model/model.json');
 
     const x1 = tf.tensor2d([[gender, r5in, r5ex, r20in, r20ex, x5in, x5ex, fresin, fresex, alxin, alxex]]); 
-    //x1.print(); 
+    // x1.print(); 
     const y1 = model.predict(x1); 
-    //y1.print();
+    // y1.print();
 
    // Normal control
    // const x2 = tf.tensor2d([[1, 1.07, 1.36, 1.72, 1.98, -0.22,	-0.16, 6.03, 5.74, 0.7, 0.58]]); 
@@ -258,7 +266,7 @@
 
     // set Result
     ProbabilityForAbormal = y1.reshape([-1]).arraySync()[0];
-    //console.log(ProbabilityForAbormal)
+    // console.log(ProbabilityForAbormal)
     }
     <!-- End of run(): Deep Learning inference -->
     </script>
