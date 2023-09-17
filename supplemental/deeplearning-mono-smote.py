@@ -34,7 +34,7 @@ Created by Yuki Sumi on Jan  23 2023
 # To install,
 # pip install -U scikit-learn 
 #  or
-# conda install -c conda-forge matplotlib
+# conda install -c conda-forge scikit-learn
 
 # imbalanced-learn https://imbalanced-learn.org/stable/index.html
 # To install,
@@ -171,10 +171,10 @@ plt.savefig("./training_mono.jpg", dpi=2400)
 plt.show()
 
 # save the trained model for python
-model.save("deeplearing_model_mono")
+model.save("deeplearning_model_mono")
 # save the trained model for javascript
 import tensorflowjs as tfjs
-tfjs.converters.save_keras_model(model, "./mostgraph_jsmodel_mono")
+tfjs.converters.save_keras_model(model, "./mostgraph_model_mono")
                                  
 # test the model at threshould 0.5
 # split labela and train data
