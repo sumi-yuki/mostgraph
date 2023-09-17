@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 # install modules
+
 # scikit-learn https://scikit-learn.org/stable/
 # pip install -U scikit-learn 
-# conda install -c conda-forge matplotlib
+# conda install -c conda-forge scikit-learn
+
 # Matplotlib https://matplotlib.org
 # pip install matplotlib
 # conda install -c conda-forge matplotlib
