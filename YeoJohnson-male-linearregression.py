@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# install modules
+# scikit-learn https://scikit-learn.org/stable/
+# pip install -U scikit-learn 
+# conda install -c conda-forge matplotlib
+# Matplotlib https://matplotlib.org
+# pip install matplotlib
+# conda install -c conda-forge matplotlib
+
 import numpy as np
 import pandas as pd
 import statistics
