@@ -58,7 +58,7 @@ import matplotlib.pyplot as plt
 import os
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
-#List of measured Item
+# List of measured Item
 MeasuredItemList = ["R5", "R5in", "R5ex", "R5delta", "R20", "R20in", "R20ex", "R20delta", "R5-R20", "R5-R20in", "R5-R20ex", "R5-R20delta", "X5", "X5in", "X5ex", "X5delta", "Fres", "Fresin", "Fresex", "Fresdelta", "ALX", "ALXin", "ALXex", "ALXdelta"]
 
 # open heatmap file to output, write Header
