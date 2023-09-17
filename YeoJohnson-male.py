@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# install modules
+# scikit-learn https://scikit-learn.org/stable/
+# pip install -U scikit-learn 
+# conda install -c conda-forge matplotlib
+# Matplotlib https://matplotlib.org
+# pip install matplotlib
+# conda install -c conda-forge matplotlib
+
 SavedFileName = "male_reference_range.csv"
 # open file, write Header
 f = open(SavedFileName, 'w')
@@ -25,7 +33,7 @@ for MeasuredItem in MeasuredItemList:
     # Transformation
     # https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html
     # Box-Cox tranformation
-    #pt = PowerTransformer(method='box-cox')
+    #　pt = PowerTransformer(method='box-cox')
     # Yeo-Johnson transformation
     pt = PowerTransformer(method='yeo-johnson')
     pt.fit(MeasuredValues_numpy)
@@ -59,9 +67,3 @@ for MeasuredItem in MeasuredItemList:
     plt.show()
 
 f.close()
-
-   
-
-
-
-
