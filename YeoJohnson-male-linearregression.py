@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 # install modules
+
 # scikit-learn https://scikit-learn.org/stable/
 # pip install -U scikit-learn 
 # conda install -c conda-forge matplotlib
+
 # Matplotlib https://matplotlib.org
 # pip install matplotlib
 # conda install -c conda-forge matplotlib
@@ -16,7 +18,7 @@ from sklearn import linear_model
 from sklearn.preprocessing import PowerTransformer
 import matplotlib.pyplot as plt
 
-#List of Mostgraph measured item
+# List of Mostgraph measured item
 MeasuredItemList = ("R5", "R5in", "R5ex", "R5delta", "R20", "R20in", "R20ex", "R20delta", "R5-R20", "R5-R20in", "R5-R20ex", "R5-R20delta", "X5", "X5in", "X5ex", "X5delta", "Fres", "Fresin", "Fresex", "Fresdelta", "ALX", "ALXin", "ALXex", "ALXdelta")
 MostgraphData_pandas = pd.read_csv("male_control.csv", encoding="utf-8")
 
@@ -29,23 +31,23 @@ IndexValues_numpy = IndexValues_pandas.values
 for MeasuredItem in MeasuredItemList:
     # Extract colume of each measured item example R5
     MeasuredValues_pandas = MostgraphData_pandas.loc[:,[MeasuredItem]]   
-    #convert to numpy from pandas dataframe
+    # convert to numpy from pandas dataframe
     MeasuredValues_numpy = MeasuredValues_pandas.values
 
     # Transformation
     # https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html
     # Box-Cox tranformation
-    #pt = PowerTransformer(method='box-cox')
+    # pt = PowerTransformer(method='box-cox')
     # Yeo-Johnson transformation
     pt = PowerTransformer(method='yeo-johnson')
     pt.fit(MeasuredValues_numpy)
     TransformedValues_numpy = pt.transform(MeasuredValues_numpy)   # [[]]
     
-    #Statistics after transformation
+    # Statistics after transformation
     SimpleMean = statistics.mean(TransformedValues_numpy.squeeze()) # [[]] -> []
     SimpleStd = statistics.stdev(TransformedValues_numpy.squeeze()) # [[]] -> []
     
-    #Inverse transformation of mean±2SD
+    # Inverse transformation of mean±2SD
     UpperLimit = pt.inverse_transform(np.array([[SimpleMean + 2 * SimpleStd]])).squeeze()  #  -> [[]] -> [[]] ->
     EstimatedValue = pt.inverse_transform(np.array([[SimpleMean]])).squeeze()  #  -> [[]] -> [[]] ->
     LowerLimit = pt.inverse_transform(np.array([[SimpleMean - 2 * SimpleStd]])).squeeze()  #  -> [[]] -> [[]] ->
