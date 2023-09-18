@@ -6,6 +6,7 @@
 # Matplotlib https://matplotlib.org
 # To install,
 # pip install matplotlib
+#  or
 # conda install -c conda-forge matplotlib
 
 # scikit-learn https://scikit-learn.org/stable/
