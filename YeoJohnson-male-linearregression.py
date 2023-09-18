@@ -4,11 +4,13 @@
 # install modules
 
 # scikit-learn https://scikit-learn.org/stable/
-# pip install -U scikit-learn 
+# pip install -U scikit-learn
+#  or
 # conda install -c conda-forge matplotlib
 
 # Matplotlib https://matplotlib.org
 # pip install matplotlib
+#  or
 # conda install -c conda-forge matplotlib
 
 import numpy as np
