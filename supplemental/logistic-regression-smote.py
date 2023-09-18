@@ -17,14 +17,6 @@ Created by Yuki Sumi on Jan  23 2023
 #  or
 # conda install -c conda-forge pandas
 
-# tensorflow https://www.tensorflow.org/?hl=en
-# To install,
-# pip install tensorflow==2.10.0
-
-# tensorflow.js https://www.tensorflow.org/js?hl=en
-# To install,
-# pip install tensorflowjs==3.21.0
-
 # Matplotlib https://matplotlib.org
 # To install,
 # pip install matplotlib
@@ -128,7 +120,7 @@ classifier = LogisticRegression(max_iter=10000)
 model = LogisticRegression()
 model.fit(X_train,y_train)
 print("model coefficient", model.coef_)
-
+print("model intercept", model.intercept_)
 
 # test the model
 # normal control
