@@ -28,6 +28,7 @@ Created by Yuki Sumi on Jan  23 2023
 # Matplotlib https://matplotlib.org
 # To install,
 # pip install matplotlib
+#  or
 # conda install -c conda-forge matplotlib
 
 # scikit-learn https://scikit-learn.org/stable/
